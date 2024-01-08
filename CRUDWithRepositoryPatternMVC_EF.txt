@@ -1,0 +1,65 @@
+https://www.youtube.com/watch?v=FpnGCeXtsps&list=PLz3T2C4dYvQKcERx7TMRbjwJuPqkv89BW&index=15
+
+1	Create new project with  ASP .NET CORE with (model view controller)  LIKE CRUDWithRepository UI   	(UI Layer)
+2	Add Another project for domain		[User for the Data access]
+		1 	Right click the solution and  - add project - select library   	[CrudWitheRepository_Core]
+
+3	Add Another project for Infrastructure		[Service layer]
+		1 	Right click the solution and  - add project - select library   	[CrudWitheRepository_Infrastructure]
+4	DB first method following
+		1	Create data base and tables 
+5	Add model for db
+		1	goto core and add a class for model
+6	Install nuget manager packages
+		1	EFCORE
+		2	EFCORE SQL
+7	Create AppDBContex
+		1	create class under Core 
+8	Add Connection string in UI layer
+		1	we using https so declare trust servercertificate = true
+9	Implememnt the sql depentenct injection in program.cs
+10	Add 2 folders inside Infrastructure
+		1	Interface
+			1	Add Interface IProductRepository
+			2	here declare all the methods
+		2	Implementations
+			1	Add Repository class to implement the inerface methods which is inherited from Interface class
+			2	We using Task because it return async method
+11	Read the data from dbcontext to product repository
+		1	Initialise the app db context  in repository class with private variable
+			Ex	:	Private readonly AppDBContext _context;
+		2	Add a constructor of current class and initialize the _context 
+12	Add empty controller in UI Layer 
+		1	Initialize the Interface to connect with methods 
+			Private readolny IProductRepository  _productRepo;
+		2	Create the constructer and inject the newly created interface 		Now we can communicate with interface to connect with db
+			public ProductController(ProductRepository productRepo)
+      			 	 {
+            				_productRepo = productRepo;
+       				 }
+		3	when ever we have to use interface we have to add the DI in program.cs
+13	Add view to the controller view
+		1	Add class model first in view
+		2	Add bootstrap packages from nuget in UI Layer and create UI 
+14	Insert Data
+		1	Create a view for insert data 
+				1	Implement ADD method in repository
+				2	Implement the ADD method in controller
+						1	Create a httpget add method and also corresponding view for insert   
+						2	Create same with HTTPPOSTand product model for insert data
+15	TO Show error and succuess message 
+		1	implememnted in layout.cshtml
+16	Update Data
+		1	Add a action Edit section in UI
+		2	Implement Edit method in product Repository .get by id method first , then edit 
+				1	First we have to check whether the product is avilabile in DB
+				2	if it is here assign updated values to that  values
+17	Delete Data
+		1	Implememnt delete method in repository and add function in controller
+		2	Add delete view
+
+
+
+ 
+
+
